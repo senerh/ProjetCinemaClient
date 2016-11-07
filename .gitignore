@@ -1,2 +1,7 @@
 #mac os files
 .DS_Store
+
+
+#Angular2
+node_modules/
+dist/
