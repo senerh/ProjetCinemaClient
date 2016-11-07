@@ -5,3 +5,5 @@
 #Angular2
 node_modules/
 dist/
+.idea/
+npm-debug.log
