@@ -1,5 +1,12 @@
 <h1>Liste des films</h1>
 
-<ul>
-    <li>film1</li>
+<ul class="films">
+    <li *ngFor="let film of films">
+        {{film.noFilm}}
+        {{film.titre}}
+        {{film.duree}}
+        {{film.dateSortie}}
+        {{film.budget}}
+        {{film.mantantRecette}}
+    </li>
 </ul>

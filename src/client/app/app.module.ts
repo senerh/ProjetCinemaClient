@@ -16,7 +16,7 @@ import {AccueilModule} from "./accueil/accueil.module";
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
-    useValue: '<%= APP_BASE %>'
+    useValue: '<%= APP_BASE %>',
   }],
   bootstrap: [AppComponent]
 
