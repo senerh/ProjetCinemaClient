@@ -29,14 +29,9 @@ export class PersonnagesComponent implements OnInit{
 
     }
 
-    public removePersonnage(noFilm: number, noActeur: number) {
-        this.personnagesService.Delete(noFilm, noActeur).subscribe();
-    }
-
-
-    public deletePerso(noFilm: number, noActeur: number): void {
+    public deletePersonnage(noFilm: number, noActeur: number): void {
         this.personnagesService
             .Delete(noFilm, noActeur)
-            .subscribe((ok)=>{console.log(ok)});
+            .subscribe();
     }
 }

@@ -16,7 +16,6 @@ export class PersonnagesService {
         this.actionUrl = _configuration.ServerWithApiUrl + 'personnages/';
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Access-Control-Allow-Origin', '*');
     }
 
     public GetAll = (): Observable<Personnage[]> => {
@@ -38,5 +37,4 @@ export class PersonnagesService {
         return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers })
             .map((res:Response) => res.json());
     }
-
 }

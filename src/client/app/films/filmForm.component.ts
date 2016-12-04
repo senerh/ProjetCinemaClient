@@ -56,6 +56,11 @@ export class FilmFormComponent implements OnInit{
                 error => console.log(error),
                 () => console.log(this.categories));
 
+        this.construireForm();
+
+    }
+
+    private construireForm(): void{
 
         this.formGroupFilm = this.formBuilderFilm.group({
             titre: [!this.film ? '' : this.film.titre, Validators.required],
@@ -63,9 +68,10 @@ export class FilmFormComponent implements OnInit{
             dateSortie: [!this.film ? '' : this.film.dateSortie, Validators.required],
             budget: [!this.film ? '' : this.film.budget, Validators.required],
             montantRecette: [!this.film ? '' : this.film.montantRecette, Validators.required],
-            realisateurByNoRea: [!this.film ? '' : this.film.realisateurByNoRea, Validators.required],
-            categorieByCodeCat: [!this.film ? '' : this.film.categorieByCodeCat, Validators.required],
+            realisateurByNoRea: [!this.film ? '' : this.film.realisateurByNoRea.noRea, Validators.required],
+            categorieByCodeCat: [!this.film ? '' : this.film.categorieByCodeCat.codeCat, Validators.required],
         })
+
     }
 
     public onFilmSubmit(valid : boolean): void {
@@ -107,12 +113,10 @@ export class FilmFormComponent implements OnInit{
     }
 
     private getFilm(idFilm : number): void {
-        console.log(this);
         this.filmsService
             .GetSingle(idFilm)
             .subscribe((data:Film) => this.film = data,
                 error => console.log(error),
-                () => console.log(this));
-        console.log(this)
+                () => {this.construireForm(); console.log(this.film)});
     }
 }
