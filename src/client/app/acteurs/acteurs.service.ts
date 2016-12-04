@@ -29,4 +29,14 @@ export class ActeursService {
             .map((response: Response) => <Acteur>response.json());
     };
 
+    public Update = (itemToUpdate: Acteur): Observable<Acteur> => {
+        console.log(JSON.stringify(itemToUpdate));
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
+            .map((response: Response) => <Acteur>response.json());
+    };
+
+    public GetSingle = (id: number): Observable<Acteur> => {
+        return this._http.get(this.actionUrl + id)
+            .map((response: Response) => <Acteur>response.json())
+    };
 }

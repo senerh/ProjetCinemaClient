@@ -1,17 +1,26 @@
-.film {
-    background-color: #54a9d0;
-}
-.addFilmButton {
-    margin-left: 22px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-.margin20{
+.padding20{
     padding-right: 20px;
     padding-left: 20px;
+    padding-top: 20px;
 }
 
 .redColor{
     background-color: aqua;
 }
+
+
+.addActeurButton {
+    margin-left: 22px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: #54495c;
+    border: none;
+    opacity: 0.8
+}
+
+
+.margin0{
+    margin: 0;
+    padding: 0;
+}
+

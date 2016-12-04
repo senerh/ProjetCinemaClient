@@ -1,7 +1,4 @@
 <div class="container row">
-    <!--<h1>Ajouter un acteur</h1>-->
-
-
 
     <form (ngSubmit)="onActeurSubmit(formGroupActeur.valid)" [formGroup]="formGroupActeur" id="form" class="topBefore">
 
@@ -24,27 +21,5 @@
 
     </form>
 
-
-    <!--<form (ngSubmit)="onActeurSubmit()" [formGroup]="formGroupActeur" class="col-xs-12">
-        <div class="form-group col-xs-4">
-            <label for="nomAct">Nom</label>
-            <input formControlName="nomAct" type="text" class="form-control" id="nomAct" required>
-        </div>
-        <div class="form-group col-xs-4">
-            <label for="prenAct">Prenom</label>
-            <input formControlName="prenAct" type="text" class="form-control" id="prenAct">
-        </div>
-        <div class="form-group col-xs-4">
-            <label for="dateNaiss">Date de naissance</label>
-            <input formControlName="dateNaiss" type="text" class="form-control" id="dateNaiss">
-        </div>
-        <div class="form-group col-xs-4">
-            <label for="dateDeces">Date de décès</label>
-            <input formControlName="dateDeces" type="text" class="form-control" id="dateDeces">
-        </div>
-
-        <button type="submit" class="btn btn-default">Valider</button>
-    </form>-->
 </div>
-{{formGroupActeur.value | json}}
-{{formGroupActeur.valid }}
+

@@ -2,7 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ActeursService} from "./acteurs.service";
 import {Acteur} from "./acteur";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
+import {Film} from "../films/film";
 
 
 @Component({
@@ -18,19 +19,33 @@ export class ActeurFormComponent implements OnInit{
 
     formGroupActeur : FormGroup;
     acteur: Acteur;
+    idActeur : number;
 
     constructor(public formBuilderActeur: FormBuilder,
                 private acteursService: ActeursService,
-                private router : Router){
+                private router : Router,
+                private routee: ActivatedRoute){
     }
 
     ngOnInit(): void {
 
+        this.routee.params.subscribe(params => {
+            this.idActeur = + params['id'];
+        });
+
+        if(!isNaN(this.idActeur)){
+            this.getActeur(this.idActeur);
+        }
+
+        this.construireForm();
+    }
+
+    private construireForm(): void {
         this.formGroupActeur = this.formBuilderActeur.group({
-            nomAct: ['', Validators.required],
-            prenAct: ['', Validators.required],
-            dateNaiss: ['', Validators.required],
-            dateDeces: '',
+            nomAct: [!this.acteur ? '' : this.acteur.nomAct, Validators.required],
+            prenAct: [!this.acteur ? '' : this.acteur.prenAct, Validators.required],
+            dateNaiss: [!this.acteur ? '' : this.acteur.dateNaiss, Validators.required],
+            dateDeces: [!this.acteur ? '' : this.acteur.dateDeces],
         })
     }
 
@@ -41,12 +56,35 @@ export class ActeurFormComponent implements OnInit{
                 () => console.log(this.acteur));
     }
 
-    onActeurSubmit(valid : boolean): void {
+    private editActeur(): void {
+        let acteurToEdit: Acteur;
+        acteurToEdit = this.formGroupActeur.value;
+        acteurToEdit.noAct = this.idActeur;
 
-        if(valid == true){
+        this.acteursService
+            .Update(acteurToEdit)
+            .subscribe((data:Acteur) => this.acteur = data,
+                error => console.log(error),
+                () => console.log(this.acteur));
+    }
+
+    public onActeurSubmit(valid : boolean): void {
+
+        if(valid == true && isNaN(this.idActeur)){
             this.addActeur();
-            this.router.navigateByUrl('/acteurs');
+            this.router.navigate(['/acteurs']);
+        }
+        else if (valid == true){
+            this.editActeur();
+            this.router.navigate(['/acteurs']);
         }
     }
 
+    private getActeur(idActeur : number): void {
+        this.acteursService
+            .GetSingle(idActeur)
+            .subscribe((data:Acteur) => this.acteur = data,
+                error => console.log(error),
+                () => {this.construireForm(); console.log(this.acteur)});
+    }
 }
