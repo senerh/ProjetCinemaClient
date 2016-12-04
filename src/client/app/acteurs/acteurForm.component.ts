@@ -48,25 +48,6 @@ export class ActeurFormComponent implements OnInit{
         })
     }
 
-    private addActeur(): void {
-        this.acteursService
-            .Add(this.formGroupActeur.value)
-            .subscribe((data:Acteur) => this.acteur = data, error => console.log(error),
-                () => console.log(this.acteur));
-    }
-
-    private editActeur(): void {
-        let acteurToEdit: Acteur;
-        acteurToEdit = this.formGroupActeur.value;
-        acteurToEdit.noAct = this.idActeur;
-
-        this.acteursService
-            .Update(acteurToEdit)
-            .subscribe((data:Acteur) => this.acteur = data,
-                error => console.log(error),
-                () => console.log(this.acteur));
-    }
-
     public onActeurSubmit(valid : boolean): void {
 
         if(valid == true && isNaN(this.idActeur)){
@@ -85,5 +66,27 @@ export class ActeurFormComponent implements OnInit{
             .subscribe((data:Acteur) => this.acteur = data,
                 error => console.log(error),
                 () => {this.construireForm(); console.log(this.acteur)});
+    }
+
+    private addActeur(): void {
+        this.acteursService
+            .Add(this.formGroupActeur.value)
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.acteur)
+            );
+    }
+
+    private editActeur(): void {
+        let acteurToEdit: Acteur;
+        acteurToEdit = this.formGroupActeur.value;
+        acteurToEdit.noAct = this.idActeur;
+
+        this.acteursService
+            .Update(acteurToEdit)
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.acteur)
+            );
     }
 }

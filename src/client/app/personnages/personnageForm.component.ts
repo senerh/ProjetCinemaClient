@@ -58,8 +58,7 @@ export class PersonnageFormComponent implements OnInit{
     private addPersonnage(): void {
         this.personnagesService
             .Add(this.formGroupPersonnage.value)
-            .subscribe((data:Personnage) => this.personnage = data, error => console.log(error),
-                () => console.log(this.personnage));
+            .subscribe();
     }
 
     private editPersonnage(): void {

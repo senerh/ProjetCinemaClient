@@ -112,8 +112,10 @@ export class FilmFormComponent implements OnInit{
 
         this.filmsService
             .Update(filmToAdd)
-            .subscribe((data:Film) => this.film = data, error => console.log(error),
-                () => console.log(this.film));
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.film)
+            );
     }
 
     private getFilm(idFilm : number): void {

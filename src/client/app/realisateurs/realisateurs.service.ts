@@ -23,10 +23,8 @@ export class RealisateursService {
             .map((response: Response) => <Realisateur[]>response.json());
     };
 
-    public Add = (realisateur: string): Observable<Realisateur> => {
-
-        return this._http.post(this.actionUrl, JSON.stringify(realisateur), { headers: this.headers })
-            .map((response: Response) => <Realisateur>response.json());
+    public Add = (realisateur: string): Observable<Response> => {
+        return this._http.post(this.actionUrl, JSON.stringify(realisateur), { headers: this.headers });
     };
 
 }

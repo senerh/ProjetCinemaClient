@@ -35,15 +35,16 @@ export class FilmsService {
     };
 
     public Add = (film: string): Observable<Film> => {
-        console.log(JSON.stringify(film));
         return this._http.post(this.actionUrl, JSON.stringify(film), { headers: this.headers })
             .map((response: Response) => <Film>response.json());
     };
 
-    public Update = (itemToUpdate: Film): Observable<Film> => {
-        console.log(JSON.stringify(itemToUpdate));
-        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .map((response: Response) => <Film>response.json());
+    public Update = (itemToUpdate: Film): Observable<Response> => {
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
+    };
+
+    public Delete (noFilm: number): Observable<Response> {
+        return this._http.delete(this.actionUrl + noFilm, { headers: this.headers });
     };
 
 }

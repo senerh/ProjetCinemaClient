@@ -23,10 +23,7 @@ export class CategoriesService {
             .map((response: Response) => <Categorie[]>response.json());
     };
 
-    public Add = (categorie: string): Observable<Categorie> => {
-
+    public Add = (categorie: string): Observable<Response> => {
         return this._http.post(this.actionUrl, JSON.stringify(categorie), { headers: this.headers })
-            .map((response: Response) => <Categorie>response.json());
     };
-
 }
