@@ -1,5 +1,5 @@
 .film {
-    background-color: #b1bebd;
+    background-color: #ffffff;
 }
 
 .film p{
@@ -7,7 +7,7 @@
 }
 
 .film h3{
-    color: #ffffff;
+    color: #0d0a6c;
     margin-top: 2px;
     margin-bottom: 2px;
 }
@@ -16,7 +16,7 @@
     margin-left: 22px;
     margin-top: 5px;
     margin-bottom: 20px;
-    background-color: #54495c;
+    background-color: #64b6bc;
     border: none;
     opacity: 0.8
 }
@@ -27,7 +27,7 @@
 }
 
 .titreFilm span{
-    color: #090647;
+    color: #0d0a6c;
     font-size: 15px;
 }
 
@@ -42,5 +42,5 @@
 
 .personnageButton {
     padding: 0 7px;
-    background-color: #425f91;
+    background-color: #090647;
 }

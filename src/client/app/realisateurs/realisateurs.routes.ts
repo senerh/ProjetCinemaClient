@@ -10,5 +10,9 @@ export const RealisateursRoutes: Route[] = [
     {
         path: 'realisateurs/add',
         component: RealisateurFormComponent
+    },
+    {
+        path: 'realisateurs/edit/:id',
+        component: RealisateurFormComponent
     }
 ];

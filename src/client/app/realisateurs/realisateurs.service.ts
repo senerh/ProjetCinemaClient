@@ -41,4 +41,9 @@ export class RealisateursService {
             .map((response: Response) => <Film[]>response.json());
     };
 
+    public GetSingle = (id: number): Observable<Realisateur> => {
+        return this._http.get(this.actionUrl + id)
+            .map((response: Response) => <Realisateur>response.json())
+    };
+
 }

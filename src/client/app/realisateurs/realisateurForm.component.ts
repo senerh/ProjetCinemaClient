@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {RealisateursService} from "./realisateurs.service";
 import {Realisateur} from "./realisateurs";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -18,28 +18,57 @@ export class RealisateurFormComponent implements OnInit{
 
     formGroupRealisateur : FormGroup;
     realisateur: Realisateur;
+    private idRealisateur: number;
 
     constructor(public formBuilderRealisateur: FormBuilder,
                 private realisateursService: RealisateursService,
-                private router : Router){
+                private router : Router,
+                private routee : ActivatedRoute){
     }
 
     ngOnInit(): void {
 
+        this.routee.params.subscribe(params => {
+            this.idRealisateur = + params['id'];
+        });
+
+        if(!isNaN(this.idRealisateur)){
+            this.getRealisateur(this.idRealisateur);
+        }
+        
+        this.formConstruct()
+    }
+    
+    private formConstruct(): void{
         this.formGroupRealisateur = this.formBuilderRealisateur.group({
-            nomRea: ['', Validators.required],
-            prenRea: ['', Validators.required]
+            nomRea: [!this.realisateur ? '' : this.realisateur.nomRea, Validators.required],
+            prenRea: [!this.realisateur ? '' : this.realisateur.prenRea, Validators.required]
         })
     }
 
     onRealisateurSubmit(valid : boolean): void {
 
-        if(valid == true){
+        if(valid == true && isNaN(this.idRealisateur)){
             this.addRealisateur();
-            this.router.navigateByUrl('/realisateurs');
+        }
+        else if (valid == true){
+            this.editRealisateur();
         }
     }
 
+    private editRealisateur(): void {
+        let realisateurToAdd: Realisateur;
+        realisateurToAdd = this.formGroupRealisateur.value;
+        realisateurToAdd.noRea = this.idRealisateur;
+
+        this.realisateursService
+            .Update(realisateurToAdd)
+            .subscribe(
+                ok => console.log(ok),
+                error => console.log(error),
+                () => this.router.navigateByUrl('/realisateurs')
+            );
+    }
 
     private addRealisateur(): void {
         this.realisateursService
@@ -47,6 +76,19 @@ export class RealisateurFormComponent implements OnInit{
             .subscribe(
                 error => console.log(error),
                 () => console.log(this.realisateur)
+            );
+    }
+
+    private getRealisateur(idRealisateur : number): void {
+        this.realisateursService
+            .GetSingle(idRealisateur)
+            .subscribe(
+                (data:Realisateur) => this.realisateur = data,
+                error => console.log(error),
+                () => {
+                    this.formConstruct();
+                    console.log(this.realisateur)
+                }
             );
     }
 }
