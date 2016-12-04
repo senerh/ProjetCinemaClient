@@ -40,6 +40,10 @@ export class FilmFormComponent implements OnInit{
             this.idFilm = + params['id'];
         });
 
+        if(!isNaN(this.idFilm)){
+            console.log(this.idFilm);
+            this.getFilm(this.idFilm);
+        }
 
         this.realisateursService
             .GetAll()
