@@ -24,6 +24,7 @@
                     Budget : {{film.budget}} €<br/>
                     Recette : {{film.montantRecette}} €<br/>
                     Catégorie : {{film.categorieByCodeCat.libelleCat}} <br/>
+                    Réalisateur : {{film.realisateurByNoRea.prenRea}} {{film.realisateurByNoRea.nomRea}}
                 </p>
                 <button (click)="getPersonnageByNoFilm(film.noFilm)"
                         type="button"
