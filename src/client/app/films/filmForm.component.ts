@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormGroup, FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {FilmsService} from "./films.service";
 import {Film} from "./film";
 import {Router, ActivatedRoute} from "@angular/router";
@@ -41,7 +41,6 @@ export class FilmFormComponent implements OnInit{
         });
 
         if(!isNaN(this.idFilm)){
-            console.log(this.idFilm);
             this.getFilm(this.idFilm);
         }
 
@@ -59,13 +58,13 @@ export class FilmFormComponent implements OnInit{
 
 
         this.formGroupFilm = this.formBuilderFilm.group({
-            titre: (typeof this.film == 'undefined') ? '' : this.film.titre,
-            duree: (typeof this.film == 'undefined') ? '' : this.film.duree,
-            dateSortie: (typeof this.film == 'undefined') ? '' : this.film.dateSortie,
-            budget: (typeof this.film == 'undefined') ? '' : this.film.budget,
-            montantRecette: (typeof this.film == 'undefined') ? '' : this.film.montantRecette,
-            realisateurByNoRea: (typeof this.film == 'undefined') ? '' : this.film.realisateurByNoRea,
-            categorieByCodeCat: (typeof this.film == 'undefined') ? '' : this.film.categorieByCodeCat,
+            titre: [(typeof this.film == 'undefined') ? '' : this.film.titre, Validators.required],
+            duree: [(typeof this.film == 'undefined') ? '' : this.film.duree, Validators.required],
+            dateSortie: [(typeof this.film == 'undefined') ? '' : this.film.dateSortie, Validators.required],
+            budget: [(typeof this.film == 'undefined') ? '' : this.film.budget, Validators.required],
+            montantRecette: [(typeof this.film == 'undefined') ? '' : this.film.montantRecette, Validators.required],
+            realisateurByNoRea: [(typeof this.film == 'undefined') ? '' : this.film.realisateurByNoRea, Validators.required],
+            categorieByCodeCat: [(typeof this.film == 'undefined') ? '' : this.film.categorieByCodeCat, Validators.required],
         })
     }
 
@@ -85,13 +84,13 @@ export class FilmFormComponent implements OnInit{
 
         if(valid == true && isNaN(this.idFilm)){
             this.addFilm();
-            this.router.navigateByUrl('/films');
+            this.router.navigate(['/films']);
         }
-        else if(valid == true){
-
+        else if (valid == true){
             this.editFilm();
-            this.router.navigateByUrl('/films');
+            this.router.navigate(['/films']);
         }
+
     }
 
     private addFilm(): void {

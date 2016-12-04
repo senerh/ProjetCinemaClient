@@ -10,7 +10,7 @@
 </a>
 
 
-<div class="margin20 row">
+<div class="padding20 row">
 
 
     <div class="col-sm-6 col-md-4" *ngFor="let film of films">
@@ -22,8 +22,9 @@
                 <p>
                     Durée : {{film.duree}} minutes <br/>
                     Date de sortie : {{film.dateSortie}} <br/>
-                    Budget : {{film.budget}} <br/>
-                    Recette : {{film.montantRecette}} <br/>
+                    Budget : {{film.budget}} €<br/>
+                    Recette : {{film.montantRecette}} €<br/>
+                    Catégorie : {{film.categorieByCodeCat.libelleCat}} <br/>
                 </p>
                 <button (click)="getPersonnageByNoFilm(film.noFilm)"
                         type="button"
