@@ -26,7 +26,6 @@ export class PersonnagesComponent implements OnInit{
             .subscribe((data:Personnage[]) => this.personnages = data,
                 error => console.log(error),
                 () => console.log(this.personnages));
-
     }
 
     public deletePersonnage(noFilm: number, noActeur: number): void {

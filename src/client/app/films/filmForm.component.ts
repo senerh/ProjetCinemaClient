@@ -106,8 +106,12 @@ export class FilmFormComponent implements OnInit{
     }
 
     private editFilm(): void {
+        let filmToAdd: Film;
+        filmToAdd = this.formGroupFilm.value;
+        filmToAdd.noFilm = this.idFilm;
+
         this.filmsService
-            .Update(this.formGroupFilm.value)
+            .Update(filmToAdd)
             .subscribe((data:Film) => this.film = data, error => console.log(error),
                 () => console.log(this.film));
     }
