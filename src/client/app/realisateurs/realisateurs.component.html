@@ -3,24 +3,46 @@
    [routerLinkActive]="['router-link-active']"
    [routerLinkActiveOptions]="{exact:true}">
 
-    <button type="button" class="addFilmButton btn btn-primary">
+
+    <button type="button" class="addRealisateurButton btn btn-primary">
         Ajouter un realisateur <span class="glyphicon glyphicon-plus"></span>
     </button>
 
 </a>
 
 
-<div class="margin20 row">
-    <div class="col-sm-6 col-md-4" *ngFor="let realisateur of realisateurs">
-        <div class="thumbnail film">
-            <!-- <img src="..." alt="...">-->
-            <div class="caption">
-                <h3>
-                    {{realisateur.prenRea}} {{realisateur.nomRea}}
-                </h3>
-                <button type="button" class="addFilmButton btn btn-primary">
-                    Voir ses films <span class="glyphicon glyphicon-plus"></span>
-                </button>
+<div class="list-group padding20">
+
+    <a class="list-group-item" *ngFor="let realisateur of realisateurs">
+        <h4 class="titreRealisateur">{{realisateur.prenRea}} {{realisateur.nomRea}}
+            <a [routerLink]="['/realisateurs/edit/'+ realisateur.noRea]"
+               [routerLinkActive]="['router-link-active']"
+               [routerLinkActiveOptions]="{exact:true}">
+
+                <span class="spanCustom glyphicon glyphicon-edit"></span>
+            </a>
+        </h4>
+
+        <button (click)="getFilmByNoRealisateur(realisateur.noRea)"
+                type="button"
+                class="filmsButton btn btn-primary btn-lg"
+                data-toggle="modal"
+                data-target="#myModal">
+            <span>Ses films</span>
+        </button>
+    </a>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Les films du réalisateur :</h2>
+                <div *ngFor="let film of films">
+                    <p>
+                        {{film.titre}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>

@@ -35,7 +35,6 @@ export class PersonnageFormComponent implements OnInit{
 
     ngOnInit(): void {
 
-
         this.filmsService
             .GetAll()
             .subscribe((data:Film[]) => this.films = data,
@@ -55,6 +54,12 @@ export class PersonnageFormComponent implements OnInit{
         })
     }
 
+    public onPersonnageSubmit(valid : boolean): void {
+        if(valid == true){
+            this.addPersonnage();
+        }
+    }
+
     private addPersonnage(): void {
         this.personnagesService
             .Add(this.formGroupPersonnage.value)
@@ -68,15 +73,9 @@ export class PersonnageFormComponent implements OnInit{
     private editPersonnage(): void {
         this.personnagesService
             .Update(this.formGroupPersonnage.value)
-            .subscribe((data:Personnage) => this.personnage = data, error => console.log(error),
-                () => console.log(this.personnage));
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.personnage)
+            );
     }
-
-    onPersonnageSubmit(valid : boolean): void {
-
-        if(valid == true){
-            this.addPersonnage();
-        }
-    }
-
 }

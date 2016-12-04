@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 import {Realisateur} from "./realisateurs";
+import {Film} from "../films/film";
 
 @Injectable()
 export class RealisateursService {
@@ -33,6 +34,11 @@ export class RealisateursService {
 
     public Update = (itemToUpdate: Realisateur): Observable<Response> => {
         return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
+    };
+
+    public GetFilmsOfRealisateur = (noRealisateur: number): Observable<Film[]> => {
+        return this._http.get(this.actionUrl + noRealisateur + "/films")
+            .map((response: Response) => <Film[]>response.json());
     };
 
 }

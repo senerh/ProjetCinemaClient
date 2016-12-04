@@ -27,9 +27,8 @@ export class PersonnagesService {
         return this._http.post(this.actionUrl, JSON.stringify(personnage), { headers: this.headers })
     };
 
-    public Update = (itemToUpdate: Personnage): Observable<Personnage> => {
-        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .map((response: Response) => <Personnage>response.json());
+    public Update = (itemToUpdate: Personnage): Observable<Response> => {
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
     };
 
     public Delete (noFilm: number, noActeur: number): Observable<Response> {
