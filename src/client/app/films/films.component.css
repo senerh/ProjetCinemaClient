@@ -26,6 +26,11 @@
     opacity: 0.7;
 }
 
+.titreFilm span{
+    color: #090647;
+    font-size: 15px;
+}
+
 .padding20{
     padding-right: 20px;
     padding-left: 20px;

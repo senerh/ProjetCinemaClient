@@ -13,8 +13,17 @@
 <div class="list-group padding20">
 
     <a class="list-group-item" *ngFor="let acteur of acteurs">
-        <h4>{{acteur.prenAct}} {{acteur.nomAct}}</h4>Né le : {{acteur.dateNaiss}}
+        <h4 class="titreActeurs">{{acteur.prenAct}} {{acteur.nomAct}}
+            <a [routerLink]="['/acteurs/edit/'+acteur.noAct]"
+               [routerLinkActive]="['router-link-active']"
+               [routerLinkActiveOptions]="{exact:true}">
+
+                <span class="spanCustom glyphicon glyphicon-edit"></span>
+            </a>
+        </h4>
+        Né le : {{acteur.dateNaiss}}
         <span *ngIf="acteur.dateDeces">/ Décédé le : {{acteur.dateDeces}}</span>
+
     </a>
 
 </div>

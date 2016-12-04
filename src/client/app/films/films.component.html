@@ -15,9 +15,17 @@
     <div class="col-sm-6 col-md-4" *ngFor="let film of films">
         <div class="thumbnail film">
             <div class="caption">
-                <h3>
+                <h3 class="titreFilm">
                     {{film.titre}}
+
+                    <a [routerLink]="['/films/edit/'+film.noFilm]"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">
+
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
                 </h3>
+
                 <p>
                     Durée : {{film.duree}} minutes <br/>
                     Date de sortie : {{film.dateSortie}} <br/>
@@ -34,6 +42,7 @@
                     <span>Les personnages</span>
                 </button>
             </div>
+
         </div>
     </div>
 
