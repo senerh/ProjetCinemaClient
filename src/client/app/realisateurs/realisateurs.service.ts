@@ -27,4 +27,12 @@ export class RealisateursService {
         return this._http.post(this.actionUrl, JSON.stringify(realisateur), { headers: this.headers });
     };
 
+    public Delete (noRealisateur: number): Observable<Response> {
+        return this._http.delete(this.actionUrl + noRealisateur, { headers: this.headers });
+    };
+
+    public Update = (itemToUpdate: Realisateur): Observable<Response> => {
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
+    };
+
 }

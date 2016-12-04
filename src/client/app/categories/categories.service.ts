@@ -26,4 +26,8 @@ export class CategoriesService {
     public Add = (categorie: string): Observable<Response> => {
         return this._http.post(this.actionUrl, JSON.stringify(categorie), { headers: this.headers })
     };
+
+    public Delete (codeCat: string): Observable<Response> {
+        return this._http.delete(this.actionUrl + codeCat, { headers: this.headers });
+    };
 }
