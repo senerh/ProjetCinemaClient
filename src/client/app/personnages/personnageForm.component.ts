@@ -58,7 +58,11 @@ export class PersonnageFormComponent implements OnInit{
     private addPersonnage(): void {
         this.personnagesService
             .Add(this.formGroupPersonnage.value)
-            .subscribe();
+            .subscribe(
+                ok => console.log(ok),
+                error => console.log(error),
+                () => this.router.navigateByUrl('/personnages')
+            );
     }
 
     private editPersonnage(): void {
@@ -72,7 +76,6 @@ export class PersonnageFormComponent implements OnInit{
 
         if(valid == true){
             this.addPersonnage();
-            this.router.navigateByUrl('/personnages');
         }
     }
 
