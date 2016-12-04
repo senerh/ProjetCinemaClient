@@ -32,13 +32,6 @@ export class RealisateurFormComponent implements OnInit{
         })
     }
 
-    private addRealisateur(): void {
-        this.realisateursService
-            .Add(this.formGroupRealisateur.value)
-            .subscribe((data:Realisateur) => this.realisateur = data, error => console.log(error),
-                () => console.log(this.realisateur));
-    }
-
     onRealisateurSubmit(valid : boolean): void {
 
         if(valid == true){
@@ -47,4 +40,13 @@ export class RealisateurFormComponent implements OnInit{
         }
     }
 
+
+    private addRealisateur(): void {
+        this.realisateursService
+            .Add(this.formGroupRealisateur.value)
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.realisateur)
+            );
+    }
 }
