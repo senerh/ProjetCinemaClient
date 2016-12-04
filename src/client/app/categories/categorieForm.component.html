@@ -1,0 +1,22 @@
+<div class="container row">
+    <!--<h1>Ajouter un categorie</h1>-->
+
+
+
+    <form (ngSubmit)="onCategorieSubmit(formGroupCategorie.valid)" [formGroup]="formGroupCategorie" id="form" class="topBefore">
+
+        <div class="form-group">
+            <input id="codeCat" type="text" formControlName="codeCat" class="form-control" placeholder="CODE DE LA CATEGORIE">
+        </div>
+
+        <div class="form-group">
+            <input id="libelleCat" type="text" formControlName="libelleCat" class="form-control" placeholder="NOM DE LA CATEGORIE">
+        </div>
+
+        <input id="submit" type="submit" value="AJOUTER">
+
+    </form>
+
+</div>
+{{formGroupCategorie.value | json}}
+{{formGroupCategorie.valid }}

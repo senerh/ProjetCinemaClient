@@ -1,12 +1,58 @@
-<h1>Liste des films</h1>
 
-<ul class="films">
-    <li *ngFor="let film of films">
-        {{film.noFilm}}
-        {{film.titre}}
-        {{film.duree}}
-        {{film.dateSortie}}
-        {{film.budget}}
-        {{film.mantantRecette}}
-    </li>
-</ul>
+<a [routerLink]="['/films/add']"
+   [routerLinkActive]="['router-link-active']"
+   [routerLinkActiveOptions]="{exact:true}">
+
+    <button type="button" class="addFilmButton btn btn-primary">
+        Ajouter un film <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+</a>
+
+
+<div class="margin20 row">
+
+
+    <div class="col-sm-6 col-md-4" *ngFor="let film of films">
+        <div class="thumbnail film">
+            <div class="caption">
+                <h3>
+                    {{film.titre}}
+                </h3>
+                <p>
+                    Durée : {{film.duree}} minutes <br/>
+                    Date de sortie : {{film.dateSortie}} <br/>
+                    Budget : {{film.budget}} <br/>
+                    Recette : {{film.montantRecette}} <br/>
+                </p>
+                <button (click)="getPersonnageByNoFilm(film.noFilm)"
+                        type="button"
+                        class="personnageButton btn btn-primary btn-lg"
+                        data-toggle="modal"
+                        data-target="#myModal">
+                    <span>Les personnages</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>Personnages du film :</h2>
+                    <div *ngFor="let personnage of personnages">
+                        <p>
+                            {{personnage.nomPers}}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

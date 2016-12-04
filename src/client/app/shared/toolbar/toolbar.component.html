@@ -1,2 +1,62 @@
-<h1>Les films de l'ambiance</h1>
-<div class="more"></div>
+<nav class="navbarCustom navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <h1 class="bannerTitle">Polyfilms</h1>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a [routerLink]="['/']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">ACCUEIL
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/films']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">FILMS
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/acteurs']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">ACTEURS
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/realisateurs']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">RÉALISATEURS
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/categories']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">CATÉGORIES
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/personnages']"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">PERSONNAGES
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- <nav>
+  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">ACCUEIL</a>
+  <a [routerLink]="['/films']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">FILMS</a>
+</nav> -->
+

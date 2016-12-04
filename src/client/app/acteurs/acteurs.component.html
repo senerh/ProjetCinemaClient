@@ -1,0 +1,27 @@
+
+<a [routerLink]="['/acteurs/add']"
+   [routerLinkActive]="['router-link-active']"
+   [routerLinkActiveOptions]="{exact:true}">
+
+    <button type="button" class="addFilmButton btn btn-primary">
+        Ajouter un acteur <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+</a>
+
+
+<div class="margin20 row">
+    <div class="col-sm-6 col-md-4" *ngFor="let acteur of acteurs">
+        <div class="thumbnail film">
+            <!-- <img src="..." alt="...">-->
+            <div class="caption">
+                <h3>
+                    {{acteur.prenAct}} {{acteur.nomAct}}
+                </h3>
+                <p>
+                    {{acteur.dateNaiss}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

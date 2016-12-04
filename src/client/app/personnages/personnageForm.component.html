@@ -1,0 +1,43 @@
+<div class="container row">
+
+    <form (ngSubmit)="onPersonnageSubmit(formGroupPersonnage.valid)" [formGroup]="formGroupPersonnage" id="form" class="topBefore">
+
+        <div class="validation" *ngIf="formGroupPersonnage.controls.nomPers.valid">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+
+        <div class="form-group">
+            <input id="nomPers" type="text" formControlName="nomPers" class="form-control" placeholder="NOM">
+        </div>
+
+        <div class="validation" *ngIf="formGroupPersonnage.controls.noAct.valid">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <div class="form-group">
+            <select id="noAct" formControlName="noAct" class="form-control">
+                <option *ngFor="let acteur of acteurs" [value]="acteur.noAct">
+                    {{acteur.prenAct}} {{acteur.nomAct}}
+                </option>
+            </select>
+        </div>
+
+        <div class="validation" *ngIf="formGroupPersonnage.controls.noFilm.valid">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <div class="form-group">
+            <select id="noFilm" formControlName="noFilm" class="form-control">
+                <option *ngFor="let film of films" [value]="film.noFilm">
+                    {{film.titre}}
+                </option>
+            </select>
+        </div>
+
+        <input id="submit" [disabled]="!formGroupPersonnage.valid" type="submit" value="AJOUTER">
+
+    </form>
+    
+</div>
+
+{{formGroupPersonnage.value | json}}
+{{formGroupPersonnage.valid }}
+

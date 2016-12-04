@@ -1,0 +1,45 @@
+<div class="container row">
+
+    <form (ngSubmit)="onFilmSubmit(formGroupFilm.valid)" [formGroup]="formGroupFilm" id="form" class="topBefore">
+
+        <div class="form-group">
+            <input id="titre" type="text" formControlName="titre" class="form-control" placeholder="TITRE">
+        </div>
+
+        <div class="form-group">
+            <input id="duree" type="text" formControlName="duree" class="form-control" placeholder="DURÉE">
+        </div>
+
+        <div class="form-group">
+            <input id="dateSortie" type="text" formControlName="dateSortie" class="form-control" placeholder="DATE DE SORTIE">
+        </div>
+
+        <div class="form-group">
+            <input id="budget" type="text" formControlName="budget" class="form-control" placeholder="BUDGET">
+        </div>
+
+        <div class="form-group">
+            <input id="montantRecette" type="text" formControlName="montantRecette" class="form-control" placeholder="MONTANT DE LA RECETTE">
+        </div>
+
+        <div class="form-group">
+            <select id="realisateur" formControlName="realisateurByNoRea" class="form-control">
+                <option *ngFor="let realisateur of realisateurs" [value]="realisateur.noRea">
+                    {{realisateur.nomRea}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select id="categorieByCodeCat" formControlName="categorieByCodeCat" class="form-control">
+                <option *ngFor="let categorie of categories" [value]="categorie.codeCat">
+                    {{categorie.libelleCat}}
+                </option>
+            </select>
+        </div>
+
+
+        <input id="submit" type="submit" value="AJOUTER">
+
+    </form>
+</div>

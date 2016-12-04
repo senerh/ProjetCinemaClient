@@ -1,0 +1,39 @@
+.film {
+    background-color: #b1bebd;
+}
+
+.film p{
+    color: #090647;
+}
+
+.film h3{
+    color: #ffffff;
+}
+
+.addFilmButton {
+    margin-left: 22px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: #54495c;
+    border: none;
+    opacity: 0.8
+}
+
+.addFilmButton:hover{
+
+    opacity: 0.7;
+}
+
+.margin20{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.redColor{
+    background-color: aqua;
+}
+
+.personnageButton {
+    padding: 0 7px;
+    background-color: #425f91;
+}

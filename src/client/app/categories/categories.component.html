@@ -1,0 +1,24 @@
+
+<a [routerLink]="['/categories/add']"
+   [routerLinkActive]="['router-link-active']"
+   [routerLinkActiveOptions]="{exact:true}">
+
+    <button type="button" class="addCategorieButton btn btn-primary">
+        Ajouter un categorie <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+</a>
+
+
+<div class="margin20 row">
+    <div class="col-sm-6 col-md-4" *ngFor="let categorie of categories">
+        <div class="thumbnail categorie">
+            <!-- <img src="..." alt="...">-->
+            <div class="caption">
+                <h3>
+                    {{categorie.libelleCat}}
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
