@@ -90,19 +90,20 @@ export class FilmFormComponent implements OnInit{
 
         if(valid == true && isNaN(this.idFilm)){
             this.addFilm();
-            this.router.navigate(['/films']);
         }
         else if (valid == true){
             this.editFilm();
-            this.router.navigate(['/films']);
         }
     }
 
     private addFilm(): void {
         this.filmsService
             .Add(this.formGroupFilm.value)
-            .subscribe((data:Film) => this.film = data, error => console.log(error),
-                () => console.log(this.film));
+            .subscribe(
+                (data:Film) => this.film = data,
+                error => console.log(error),
+                () => this.router.navigateByUrl('/films')
+            );
     }
 
     private editFilm(): void {
@@ -113,16 +114,22 @@ export class FilmFormComponent implements OnInit{
         this.filmsService
             .Update(filmToAdd)
             .subscribe(
+                ok => console.log(ok),
                 error => console.log(error),
-                () => console.log(this.film)
+                () => this.router.navigateByUrl('/films')
             );
     }
 
     private getFilm(idFilm : number): void {
         this.filmsService
             .GetSingle(idFilm)
-            .subscribe((data:Film) => this.film = data,
+            .subscribe(
+                (data:Film) => this.film = data,
                 error => console.log(error),
-                () => {this.construireForm(); console.log(this.film)});
+                () => {
+                    this.construireForm();
+                    console.log(this.film)
+                }
+            );
     }
 }
