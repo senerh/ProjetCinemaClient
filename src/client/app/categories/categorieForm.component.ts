@@ -32,20 +32,22 @@ export class CategorieFormComponent implements OnInit{
         })
     }
 
-    private addCategorie(): void {
-
-        this.categoriesService
-            .Add(this.formGroupCategorie.value)
-            .subscribe((data:Categorie) => this.categorie = data, error => console.log(error),
-                () => console.log(this.categorie));
-    }
-
     onCategorieSubmit(valid : boolean): void {
 
         if(valid == true){
             this.addCategorie();
             this.router.navigateByUrl('/categories');
         }
+    }
+
+    private addCategorie(): void {
+
+        this.categoriesService
+            .Add(this.formGroupCategorie.value)
+            .subscribe(
+                error => console.log(error),
+                () => console.log(this.categorie)
+            );
     }
 
 }
