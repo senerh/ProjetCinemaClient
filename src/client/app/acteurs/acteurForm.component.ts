@@ -3,7 +3,6 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ActeursService} from "./acteurs.service";
 import {Acteur} from "./acteur";
 import {Router, ActivatedRoute} from "@angular/router";
-import {Film} from "../films/film";
 
 
 @Component({
