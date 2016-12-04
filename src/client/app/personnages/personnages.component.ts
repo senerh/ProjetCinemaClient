@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {PersonnagesService} from "./personnages.service";
 import {Personnage} from "./personnage";
 
@@ -29,7 +29,12 @@ export class PersonnagesComponent implements OnInit{
 
     }
 
-    public removePersonnage(noFilm: number, noActeur: number): void {
+    public removePersonnage(noFilm: number, noActeur: number) {
+        this.personnagesService.Delete(noFilm, noActeur).subscribe();
+    }
+
+
+    public deletePerso(noFilm: number, noActeur: number): void {
         this.personnagesService
             .Delete(noFilm, noActeur)
             .subscribe((ok)=>{console.log(ok)});

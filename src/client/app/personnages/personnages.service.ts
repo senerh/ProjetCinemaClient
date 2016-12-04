@@ -34,8 +34,9 @@ export class PersonnagesService {
             .map((response: Response) => <Personnage>response.json());
     };
 
-    public Delete = (noFilm: number, noActeur: number): Observable<Response> => {
-        return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers });
-    };
+    public Delete (noFilm: number, noActeur: number): Observable<Personnage[]> {
+        return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers })
+            .map((res:Response) => res.json());
+    }
 
 }

@@ -44,6 +44,6 @@ export class FilmsService {
         console.log(JSON.stringify(itemToUpdate));
         return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
             .map((response: Response) => <Film>response.json());
-    }
+    };
 
 }

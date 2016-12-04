@@ -58,13 +58,13 @@ export class FilmFormComponent implements OnInit{
 
 
         this.formGroupFilm = this.formBuilderFilm.group({
-            titre: [(typeof this.film == 'undefined') ? '' : this.film.titre, Validators.required],
-            duree: [(typeof this.film == 'undefined') ? '' : this.film.duree, Validators.required],
-            dateSortie: [(typeof this.film == 'undefined') ? '' : this.film.dateSortie, Validators.required],
-            budget: [(typeof this.film == 'undefined') ? '' : this.film.budget, Validators.required],
-            montantRecette: [(typeof this.film == 'undefined') ? '' : this.film.montantRecette, Validators.required],
-            realisateurByNoRea: [(typeof this.film == 'undefined') ? '' : this.film.realisateurByNoRea, Validators.required],
-            categorieByCodeCat: [(typeof this.film == 'undefined') ? '' : this.film.categorieByCodeCat, Validators.required],
+            titre: [!this.film ? '' : this.film.titre, Validators.required],
+            duree: [!this.film ? '' : this.film.duree, Validators.required],
+            dateSortie: [!this.film ? '' : this.film.dateSortie, Validators.required],
+            budget: [!this.film ? '' : this.film.budget, Validators.required],
+            montantRecette: [!this.film ? '' : this.film.montantRecette, Validators.required],
+            realisateurByNoRea: [!this.film ? '' : this.film.realisateurByNoRea, Validators.required],
+            categorieByCodeCat: [!this.film ? '' : this.film.categorieByCodeCat, Validators.required],
         })
     }
 
@@ -90,7 +90,6 @@ export class FilmFormComponent implements OnInit{
             this.editFilm();
             this.router.navigate(['/films']);
         }
-
     }
 
     private addFilm(): void {
@@ -108,10 +107,12 @@ export class FilmFormComponent implements OnInit{
     }
 
     private getFilm(idFilm : number): void {
+        console.log(this);
         this.filmsService
             .GetSingle(idFilm)
             .subscribe((data:Film) => this.film = data,
                 error => console.log(error),
-                () => console.log(this.film));
+                () => console.log(this));
+        console.log(this)
     }
 }
