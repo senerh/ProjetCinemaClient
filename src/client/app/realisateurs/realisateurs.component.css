@@ -13,9 +13,10 @@
     margin-left: 22px;
     margin-top: 5px;
     margin-bottom: 20px;
-    background-color: #54495c;
-    border: none;
-    opacity: 0.8
+    background-color: #64b6bc;
+    border-color: #090647;
+    opacity: 0.8;
+    color: #090647;
 }
 
 .addRealisateurButton:hover{

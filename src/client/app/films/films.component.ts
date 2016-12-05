@@ -46,6 +46,15 @@ export class FilmsComponent implements OnInit{
                 () => console.log(this.personnages));
     }
 
+    /*private trierFilm(): void{
+        var index = 0;
+        for (let index =0; index < this.films.length; index++){
+            if(this.codeCat && (this.films[index].categorieByCodeCat.codeCat == this.codeCat)){
+                delete this.films[index];
+            }
+        }
+    }*/
+
     private getAllFilms(): void {
         this.filmsService
             .GetAll()

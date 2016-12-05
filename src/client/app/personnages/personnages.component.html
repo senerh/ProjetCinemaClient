@@ -10,19 +10,9 @@
 </a>
 
 
-<div class="margin20 row">
-    <div class="col-sm-6 col-md-4" *ngFor="let personnage of personnages">
-        <div class="thumbnail personnage">
-            <!-- <img src="..." alt="...">-->
-            <div class="caption">
-                <p>
-                    {{personnage.nomPers}}
-                </p>
-            </div>
-
-            <a (click)="deletePersonnage(personnage.noFilm, personnage.noAct)">
-                Supprimer <span class="glyphicon glyphicon-remove"></span>
-            </a>
-        </div>
-    </div>
-</div>
+<ul class="listeCategorie list-group listePersonnage">
+    <li *ngFor="let personnage of personnages" class="list-group-item">
+        <!--<span class="badge">14</span>-->
+        {{personnage.nomPers}}
+    </li>
+</ul>

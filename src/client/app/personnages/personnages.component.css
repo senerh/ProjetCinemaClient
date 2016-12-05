@@ -5,6 +5,9 @@
     margin-left: 22px;
     margin-top: 5px;
     margin-bottom: 20px;
+    background-color: #64b6bc;
+    border-color: #090647;
+    color: #090647;
 }
 
 .margin20{
@@ -18,4 +21,10 @@
 
 .removePersonnage {
     background-color: #914d43;
+}
+
+.listePersonnage{
+    padding-left: 20px;
+    padding-right: 30%;
+
 }
