@@ -64,18 +64,21 @@ export class RealisateurFormComponent implements OnInit{
         this.realisateursService
             .Update(realisateurToAdd)
             .subscribe(
-                ok => console.log(ok),
                 error => console.log(error),
                 () => this.router.navigateByUrl('/realisateurs')
             );
     }
+
 
     private addRealisateur(): void {
         this.realisateursService
             .Add(this.formGroupRealisateur.value)
             .subscribe(
                 error => console.log(error),
-                () => console.log(this.realisateur)
+                () => {
+                    console.log(this.realisateur);
+                    this.router.navigateByUrl('/realisateurs');
+                }
             );
     }
 

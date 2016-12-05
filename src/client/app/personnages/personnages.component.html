@@ -10,9 +10,13 @@
 </a>
 
 
+
 <ul class="listeCategorie list-group listePersonnage">
     <li *ngFor="let personnage of personnages" class="list-group-item">
-        <!--<span class="badge">14</span>-->
         {{personnage.nomPers}}
+        <span class="glyphicon glyphicon-remove"
+              (click)="deletePersonnage(personnage.noFilm, personnage.noAct)">
+        </span>
     </li>
 </ul>
+

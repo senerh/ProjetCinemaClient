@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {CategoriesService} from "./categories.service";
 import {Categorie} from "./categorie";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -14,10 +15,18 @@ import {Categorie} from "./categorie";
 export class CategoriesComponent implements OnInit{
 
     categories: Categorie[];
+    resultat: string;
 
-    constructor(private categoriesService: CategoriesService) { }
+    constructor(private categoriesService: CategoriesService, private routee: ActivatedRoute) { }
 
     ngOnInit() {
+
+        this.routee.params.subscribe(params => {
+            this.resultat = params['resultat'];
+        });
+
+        console.log(this.resultat);
+
         this.getAllCategories();
     }
 

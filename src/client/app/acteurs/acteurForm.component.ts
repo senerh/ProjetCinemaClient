@@ -43,8 +43,10 @@ export class ActeurFormComponent implements OnInit{
         this.formGroupActeur = this.formBuilderActeur.group({
             nomAct: [!this.acteur ? '' : this.acteur.nomAct, Validators.required],
             prenAct: [!this.acteur ? '' : this.acteur.prenAct, Validators.required],
-            dateNaiss: [!this.acteur ? '' : this.acteur.dateNaiss, Validators.required],
-            dateDeces: [!this.acteur ? '' : this.acteur.dateDeces],
+            dateNaiss: [!this.acteur ? '' : this.acteur.dateNaiss, [Validators.required,
+                Validators.pattern("[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])")]],
+            dateDeces: [!this.acteur ? '' : this.acteur.dateDeces, [
+                Validators.pattern("[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])")]]
         })
     }
 

@@ -10,5 +10,9 @@ export const CategoriesRoutes: Route[] = [
     {
         path: 'categories/add',
         component: CategorieFormComponent
+    },
+    {
+        path: 'categories/:resultat',
+        component: CategoriesComponent
     }
 ];

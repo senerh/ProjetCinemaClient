@@ -10,10 +10,17 @@
             <input id="prenAct" type="text" formControlName="prenAct" class="form-control" placeholder="PRENOM">
         </div>
 
+        <div class="validation" *ngIf="formGroupActeur.controls.dateNaiss.invalid">
+            <span>La date doit être au format yyyy/mm/dd</span>
+        </div>
         <div class="form-group">
             <input id="dateNaiss" type="text" formControlName="dateNaiss" class="form-control" placeholder="DATE DE NAISSANCE">
         </div>
 
+
+        <div class="validation" *ngIf="formGroupActeur.controls.dateDeces.invalid">
+            <span>La date doit être au format yyyy/mm/dd</span>
+        </div>
         <div class="form-group">
             <input id="dateDeces" type="text" formControlName="dateDeces" class="form-control" placeholder="DATE DE DÉCÈS">
         </div>
@@ -22,4 +29,5 @@
     </form>
 
 </div>
+
 

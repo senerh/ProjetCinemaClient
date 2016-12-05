@@ -3,8 +3,10 @@
   padding-right: 5%;
   margin-top: 9px;
   color: #ffffff;
+
 }
 
 .navbarCustom {
-  background-color: #090647;
+  background-color: #000000;
+  border-radius: 0;
 }

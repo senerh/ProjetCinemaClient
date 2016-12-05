@@ -23,8 +23,9 @@ export class PersonnagesService {
             .map((response: Response) => <Personnage[]>response.json());
     };
 
-    public Add = (personnage: string): Observable<Response> => {
+    public Add = (personnage: string): Observable<Personnage> => {
         return this._http.post(this.actionUrl, JSON.stringify(personnage), { headers: this.headers })
+            .map((response: Response) => <Personnage>response.json());
     };
 
     public Update = (itemToUpdate: Personnage): Observable<Response> => {

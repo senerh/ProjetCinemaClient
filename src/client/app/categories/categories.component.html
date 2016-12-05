@@ -1,8 +1,16 @@
 
+<div *ngIf="resultat == 'false'" onclick="$('.alert1').hide()" class="customValidation alert1 alert alert-danger">
+    <strong>Erreur</strong>  Une catégorie existe déja avec le même code
+</div>
+
+
+<div *ngIf="resultat == 'true'" onclick="$('.alert2').hide()" class="customValidation alert2 alert alert-success">
+    <strong>Succès</strong>  Cette catégorie a été ajoutée
+</div>
+
 <a [routerLink]="['/categories/add']"
    [routerLinkActive]="['router-link-active']"
    [routerLinkActiveOptions]="{exact:true}">
-
 
     <button type="button" class="addCategorieButton btn btn-primary">
         Ajouter un categorie <span class="glyphicon glyphicon-plus"></span>
@@ -11,16 +19,16 @@
 </a>
 
 
-    <ul class="listeCategorie list-group">
-        <li *ngFor="let categorie of categories" class="list-group-item">
-            <!--<span class="badge">14</span>-->
-            {{categorie.libelleCat}}
-            <a [routerLink]="['/films/categorie/' + categorie.codeCat]"
-               [routerLinkActive]="['router-link-active']"
-               [routerLinkActiveOptions]="{exact:true}">
+<ul class="listeCategorie list-group">
+    <li *ngFor="let categorie of categories" class="list-group-item">
+        <!--<span class="badge">14</span>-->
+        {{categorie.libelleCat}}
+        <a [routerLink]="['/films/categorie/' + categorie.codeCat]"
+           [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}">
 
-                <br/>Voir les films
-            </a>
+            <br/>Voir les films
+        </a>
 
-        </li>
-    </ul>
+    </li>
+</ul>

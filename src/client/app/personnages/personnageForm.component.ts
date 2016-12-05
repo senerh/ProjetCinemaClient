@@ -64,7 +64,6 @@ export class PersonnageFormComponent implements OnInit{
         this.personnagesService
             .Add(this.formGroupPersonnage.value)
             .subscribe(
-                ok => console.log(ok),
                 error => console.log(error),
                 () => this.router.navigateByUrl('/personnages')
             );

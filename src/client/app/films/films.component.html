@@ -11,7 +11,7 @@
 <div class="padding20 row">
 
     <div class="col-sm-6 col-md-4" *ngFor="let film of films">
-        <div *ngIf="codeCat == film.categorieByCodeCat.codeCat || !codeCat" >
+        <div *ngIf="codeCat == film.categorieByCodeCat.codeCat || !codeCat">
             <div class="thumbnail film">
                 <div class="caption">
                     <h3 class="titreFilm">
@@ -33,6 +33,11 @@
                         Catégorie : {{film.categorieByCodeCat.libelleCat}} <br/>
                         Réalisateur : {{film.realisateurByNoRea.prenRea}} {{film.realisateurByNoRea.nomRea}}
                     </p>
+
+                    <a href="#">
+                        <span (click)="deleteFilm(film.noFilm)"> Supprimer</span>
+                    </a>
+
                     <button (click)="getPersonnageByNoFilm(film.noFilm)"
                             type="button"
                             class="personnageButton btn btn-primary btn-lg"

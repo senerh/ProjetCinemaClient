@@ -18,6 +18,7 @@ export class CategorieFormComponent implements OnInit{
 
     formGroupCategorie : FormGroup;
     categorie: Categorie;
+    private categories: Categorie[];
 
     constructor(public formBuilderCategorie: FormBuilder,
                 private categoriesService: CategoriesService,
@@ -34,10 +35,31 @@ export class CategorieFormComponent implements OnInit{
 
     onCategorieSubmit(valid : boolean): void {
 
+
         if(valid == true){
-            this.addCategorie();
-            this.router.navigateByUrl('/categories');
+            this.getAllCategorie();
         }
+    }
+
+    private getAllCategorie(): void {
+        this.categoriesService
+            .GetAll()
+            .subscribe((data:Categorie[]) => this.categories = data,
+                error => console.log(error),
+                () => {
+                console.log(this.categories);
+                console.log(this.categorieExist());
+
+                if(!this.categorieExist()) {
+                    this.addCategorie();
+                    this.router.navigateByUrl('/categories/true');
+                }
+                else {
+                    this.router.navigateByUrl('/categories/false');
+                }
+        });
+
+
     }
 
     private addCategorie(): void {
@@ -49,5 +71,17 @@ export class CategorieFormComponent implements OnInit{
                 () => console.log(this.categorie)
             );
     }
+
+    private categorieExist(): boolean{
+        for (let categorie of this.categories){
+            console.log(this.formGroupCategorie.value.codeCat);
+            console.log(categorie.codeCat);
+            if(this.formGroupCategorie.value.codeCat == categorie.codeCat){
+                return true;
+            }
+        }
+        return false
+    }
+
 
 }
