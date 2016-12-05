@@ -27,7 +27,7 @@ export class CategorieFormComponent implements OnInit{
     ngOnInit(): void {
 
         this.formGroupCategorie = this.formBuilderCategorie.group({
-            codeCat: ['', Validators.required],
+            codeCat: ['', [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
             libelleCat: ['', Validators.required],
         })
     }

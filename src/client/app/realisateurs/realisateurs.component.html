@@ -39,13 +39,9 @@
             <div class="modal-body">
                 <h2>Les films du réalisateur :</h2>
                 <div *ngFor="let film of films">
-                    <a [routerLink]="['/films']"
-                       [routerLinkActive]="['router-link-active']"
-                       [routerLinkActiveOptions]="{exact:true}">
-                        <p>
-                            {{film.titre}}
-                        </p>
-                    </a>
+                    <p>
+                        {{film.titre}}
+                    </p>
                 </div>
             </div>
         </div>

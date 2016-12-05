@@ -15,7 +15,6 @@ import {Categorie} from "../categories/categorie";
     templateUrl: 'filmForm.component.html',
     styleUrls: ['../../css/form.css'],
     providers: [FilmsService, RealisateursService, CategoriesService],
-
 })
 
 export class FilmFormComponent implements OnInit{

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Film} from "./film";
 import {FilmsService} from "./films.service";
 import {Personnage} from "../personnages/personnage";
+import indexOf = require("core-js/fn/array/index-of");
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
 
@@ -16,10 +18,21 @@ export class FilmsComponent implements OnInit{
 
     films: Film[];
     personnages: Personnage[];
+    codeCat: string;
 
-    constructor(private filmsService: FilmsService) { }
+    constructor(private filmsService: FilmsService,
+                private routee: ActivatedRoute) {
+
+    }
 
     ngOnInit() {
+
+
+        this.routee.params.subscribe(params => {
+            this.codeCat = params['codeCat'];
+        });
+        console.log(this.codeCat);
+
         this.getAllFilms();
     }
 
@@ -38,6 +51,6 @@ export class FilmsComponent implements OnInit{
             .GetAll()
             .subscribe((data:Film[]) => this.films = data,
                 error => console.log(error),
-                () => console.log(this.films));
+                () => {console.log(this.films)});
     }
 }

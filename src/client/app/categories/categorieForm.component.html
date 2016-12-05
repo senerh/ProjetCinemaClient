@@ -5,6 +5,9 @@
 
     <form (ngSubmit)="onCategorieSubmit(formGroupCategorie.valid)" [formGroup]="formGroupCategorie" id="form" class="topBefore">
 
+        <div class="validation" *ngIf="formGroupCategorie.controls.codeCat.invalid">
+            <span>Le code de la categorie doit faire 2 caractères</span>
+        </div>
         <div class="form-group">
             <input id="codeCat" type="text" formControlName="codeCat" class="form-control" placeholder="CODE DE LA CATEGORIE">
         </div>
