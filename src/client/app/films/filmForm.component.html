@@ -1,7 +1,6 @@
 <div class="container row">
 
     <form (ngSubmit)="onFilmSubmit(formGroupFilm.valid)" [formGroup]="formGroupFilm" id="form" class="topBefore">
-
         <div class="form-group">
             <input id="titre" type="text" formControlName="titre" class="form-control" placeholder="TITRE">
         </div>
@@ -10,6 +9,9 @@
             <input id="duree" type="text" formControlName="duree" class="form-control" placeholder="DURÉE">
         </div>
 
+        <div class="validation" *ngIf="formGroupFilm.controls.dateSortie.invalid">
+            <span>La date doit être au format yyyy-mm-dd</span>
+        </div>
         <div class="form-group">
             <input id="dateSortie" type="text" formControlName="dateSortie" class="form-control" placeholder="DATE DE SORTIE">
         </div>

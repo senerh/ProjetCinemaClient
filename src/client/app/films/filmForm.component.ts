@@ -62,15 +62,16 @@ export class FilmFormComponent implements OnInit{
     private construireForm(): void{
 
         this.formGroupFilm = this.formBuilderFilm.group({
+
             titre: [!this.film ? '' : this.film.titre, Validators.required],
             duree: [!this.film ? '' : this.film.duree, Validators.required],
-            dateSortie: [!this.film ? '' : this.film.dateSortie, Validators.required],
             budget: [!this.film ? '' : this.film.budget, Validators.required],
+            dateSortie: [!this.film ? '' : this.film.dateSortie, [Validators.required,
+                Validators.pattern("[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])")]],
             montantRecette: [!this.film ? '' : this.film.montantRecette, Validators.required],
             realisateurByNoRea: [!this.film ? '' : this.film.realisateurByNoRea.noRea, Validators.required],
             categorieByCodeCat: [!this.film ? '' : this.film.categorieByCodeCat.codeCat, Validators.required],
         })
-
     }
 
     public onFilmSubmit(valid : boolean): void {
