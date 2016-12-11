@@ -7,7 +7,16 @@
     margin-bottom: 20px;
     background-color: #64b6bc;
     border-color: #090647;
-    color: #090647;
+    color: #060437;
+}
+
+.addPersonnage2Button {
+    height: 40px;
+    width: 240px;
+    background-color: #64b6bc;
+    border-color: #f4fffb;
+    color: #f4fffb;
+    margin-top: 7px;
 }
 
 .margin20{
@@ -26,5 +35,15 @@
 .listePersonnage{
     padding-left: 20px;
     padding-right: 30%;
+    opacity: 0.8;
 
 }
+
+.listePersonnage p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: -15px;
+    font-weight: 400;
+    color: #060437;
+}
+

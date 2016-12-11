@@ -1,5 +1,6 @@
 .film {
     background-color: #ffffff;
+    opacity: 0.8;
 }
 
 .film p{
@@ -9,7 +10,18 @@
 .film h3{
     color: #0d0a6c;
     margin-top: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 12px;
+    letter-spacing: 3px;
+    font-size: 30px;
+}
+
+
+.gras{
+    font-weight: 800;
+}
+
+.lettreEspace{
+
 }
 
 .addFilmButton {
@@ -20,6 +32,15 @@
     border-color: #090647;
     color: #090647;
     opacity: 0.8
+}
+
+.actionButton {
+    margin-top: 5px;
+    background-color: #64b6bc;
+    border-color: #090647;
+    color: #090647;
+    opacity: 0.8;
+    text-decoration: none;
 }
 
 .addFilmButton:hover{
@@ -34,8 +55,8 @@
 
 .padding20{
 
-    margin-right: 15px;
-    margin-left: 15px;
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .redColor{
@@ -45,4 +66,28 @@
 .personnageButton {
     padding: 0 7px;
     background-color: #090647;
+}
+
+
+.styled-select select {
+    background: transparent;
+    width: 250px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 34px;
+    -webkit-appearance: none;
+    color: #090647;
+}
+
+.styled-select{
+    width: 313px;
+    height: 34px;
+    overflow: hidden;
+    background-color: #64b6bc;
+    border: 1px solid #0d0a6c;
+    margin-left: 22px;
+    margin-bottom: 3%;
 }

@@ -54,11 +54,9 @@ export class ActeurFormComponent implements OnInit{
 
         if(valid == true && isNaN(this.idActeur)){
             this.addActeur();
-            this.router.navigate(['/acteurs']);
         }
         else if (valid == true){
             this.editActeur();
-            this.router.navigate(['/acteurs']);
         }
     }
 
@@ -71,13 +69,18 @@ export class ActeurFormComponent implements OnInit{
     }
 
     private addActeur(): void {
+
         this.acteursService
             .Add(this.formGroupActeur.value)
-            .subscribe(
+            .subscribe((data:Acteur) => this.acteur = data,
                 error => console.log(error),
-                () => console.log(this.acteur)
+                () => {
+                    console.log(this.acteur);
+                    this.router.navigate(['/acteurs']);
+                }
             );
     }
+
 
     private editActeur(): void {
         let acteurToEdit: Acteur;
@@ -88,7 +91,10 @@ export class ActeurFormComponent implements OnInit{
             .Update(acteurToEdit)
             .subscribe(
                 error => console.log(error),
-                () => console.log(this.acteur)
+                () => {
+                    console.log(this.acteur);
+                    this.router.navigate(['/acteurs']);
+                }
             );
     }
 }

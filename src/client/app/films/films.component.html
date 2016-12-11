@@ -5,50 +5,77 @@
     <button type="button" class="addFilmButton btn btn-primary">
         Ajouter un film <span class="glyphicon glyphicon-plus"></span>
     </button>
-
 </a>
 
-<div class="padding20 row">
+<button type="button" (click)="resetTrier()" class="addFilmButton btn btn-primary">
+    Voir tous les films <span class="glyphicon glyphicon-search"></span>
+</button>
 
-    <div class="col-sm-6 col-md-4" *ngFor="let film of films">
-        <div *ngIf="codeCat == film.categorieByCodeCat.codeCat || !codeCat">
+<form [formGroup]="formGroupCategorie" id="form" class="topBefore">
+    <div class="styled-select">
+        <select id="categorieFilter" (ngModelChange)="trierFilmByCat($event)" formControlName="categorie" class="form-control">
+            <option value="">Choisissez une catégorie ...</option>
+            <option *ngFor="let categorie of categories" [value]="categorie.codeCat">
+                {{categorie.libelleCat}}
+            </option>
+        </select>
+    </div>
+</form>
+
+<div class="padding20 row">
+    <div  *ngFor="let film of films">
+        <div class="col-sm-6 col-md-4"
+             *ngIf="(codeCat == film.categorieByCodeCat.codeCat || !codeCat) && (noRea == film.realisateurByNoRea.noRea || !noRea) ">
             <div class="thumbnail film">
                 <div class="caption">
+
+
                     <h3 class="titreFilm">
                         {{film.titre}}
-
-                        <a [routerLink]="['/films/edit/'+film.noFilm]"
-                           [routerLinkActive]="['router-link-active']"
-                           [routerLinkActiveOptions]="{exact:true}">
-
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
                     </h3>
 
                     <p>
-                        Durée : {{film.duree}} minutes <br/>
-                        Date de sortie : {{film.dateSortie}} <br/>
-                        Budget : {{film.budget}} €<br/>
-                        Recette : {{film.montantRecette}} €<br/>
-                        Catégorie : {{film.categorieByCodeCat.libelleCat}} <br/>
-                        Réalisateur : {{film.realisateurByNoRea.prenRea}} {{film.realisateurByNoRea.nomRea}}
+                        <span class="gras">Durée </span> : {{film.duree}} minutes <br/>
+                        <span class="gras">Date de sortie  </span>: {{film.dateSortie}} <br/>
+                        <span class="gras">Budget</span> : {{film.budget}} €<br/>
+                        <span class="gras">Recette</span> : {{film.montantRecette}} €<br/>
+                        <span class="gras">Catégorie</span> : {{film.categorieByCodeCat.libelleCat}} <br/>
+                        <span class="gras">Réalisateur </span>: {{film.realisateurByNoRea.prenRea}} {{film.realisateurByNoRea.nomRea}}
+
+                        <br/>
+                        <span onmouseover="this.style.cursor='pointer'" (click)="trierFilmByRea(film.realisateurByNoRea.noRea)" class="glyphicon glyphicon-zoom-in">
+                            Trier par réalisateur
+                        </span>
+
                     </p>
 
-                    <a href="#">
-                        <span (click)="deleteFilm(film.noFilm)"> Supprimer</span>
+                    <a [routerLink]="['/films/edit/'+film.noFilm]"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">
+
+                        <button type="button" class="actionButton btn btn-primary">
+                            Editer <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                     </a>
+
+                    <button (click)="deleteFilm(film.noFilm)" type="button" class="actionButton btn btn-primary">
+                        Supprimer <span class="glyphicon glyphicon-remove"></span>
+                    </button>
 
                     <button (click)="getPersonnageByNoFilm(film.noFilm)"
                             type="button"
-                            class="personnageButton btn btn-primary btn-lg"
+                            class="actionButton btn btn-sm"
                             data-toggle="modal"
                             data-target="#myModal">
-                        <span>Les personnages</span>
+                        Voir les personnages
                     </button>
+
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -57,7 +84,7 @@
                     <h2>Personnages du film :</h2>
                     <div *ngFor="let personnage of personnages">
                         <p>
-                            {{personnage.nomPers}}
+                            {{personnage.nomPers}} - Joué par {{personnage.acteurByNoAct.prenAct}} {{personnage.acteurByNoAct.nomAct}}
                         </p>
                     </div>
                 </div>

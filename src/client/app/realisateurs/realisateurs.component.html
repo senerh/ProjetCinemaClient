@@ -14,14 +14,31 @@
 <div class="list-group padding20">
 
     <a class="list-group-item" *ngFor="let realisateur of realisateurs">
-        <h4 class="titreRealisateur">{{realisateur.prenRea}} {{realisateur.nomRea}}
-            <a [routerLink]="['/realisateurs/edit/'+ realisateur.noRea]"
-               [routerLinkActive]="['router-link-active']"
-               [routerLinkActiveOptions]="{exact:true}">
+        <h4 class="titreRealisateur">{{realisateur.prenRea}} {{realisateur.nomRea}}</h4>
 
-                <span class="spanCustom glyphicon glyphicon-edit"></span>
-            </a>
-        </h4>
+        <div class="btn-group">
+            <button type="button" class="btn btn-info">Action</button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a [routerLink]="['/realisateurs/edit/'+ realisateur.noRea]"
+                       [routerLinkActive]="['router-link-active']"
+                       [routerLinkActiveOptions]="{exact:true}">
+
+                        Editer
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li *ngIf="realisateur.deletable"
+                    (click)="deleteRealisateur(realisateur.noRea)">
+                    <a>Supprimer</a>
+                </li>
+            </ul>
+        </div>
 
         <button (click)="getFilmByNoRealisateur(realisateur.noRea)"
                 type="button"

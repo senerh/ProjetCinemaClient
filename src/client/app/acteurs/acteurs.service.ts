@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 import {Acteur} from "./acteur";
+import {Personnage} from "../personnages/personnage";
 
 @Injectable()
 export class ActeursService {
@@ -23,12 +24,14 @@ export class ActeursService {
             .map((response: Response) => <Acteur[]>response.json());
     };
 
-    public Add = (acteur: string): Observable<Response> => {
-        return this._http.post(this.actionUrl, JSON.stringify(acteur), { headers: this.headers });
+    public Add = (acteur: string): Observable<Acteur> => {
+        return this._http.post(this.actionUrl, JSON.stringify(acteur), { headers: this.headers })
+            .map((response: Response) => <Acteur>response.json());
     };
 
     public Update = (itemToUpdate: Acteur): Observable<Response> => {
         return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 
     public GetSingle = (id: number): Observable<Acteur> => {
@@ -36,7 +39,13 @@ export class ActeursService {
             .map((response: Response) => <Acteur>response.json())
     };
 
-    public Delete (noActeur: number): Observable<Response> {
-        return this._http.delete(this.actionUrl + noActeur, { headers: this.headers });
+    public Delete (noActeur: number): Observable<Acteur> {
+        return this._http.delete(this.actionUrl + noActeur, { headers: this.headers })
+            .map((response: Response) => <Acteur>response.json())
+    };
+
+    public GetPersonnagesOfActeurs = (noActeurs: number): Observable<Personnage[]> => {
+        return this._http.get(this.actionUrl + noActeurs + "/personnages")
+            .map((response: Response) => <Personnage[]>response.json());
     };
 }

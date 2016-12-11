@@ -9,14 +9,37 @@
 
 </a>
 
+<button type="button" (click)="resetTrier()" class="addPersonnageButton btn btn-primary">
+    Voir tous les personnages <span class="glyphicon glyphicon-search"></span>
+</button>
 
 
 <ul class="listeCategorie list-group listePersonnage">
-    <li *ngFor="let personnage of personnages" class="list-group-item">
-        {{personnage.nomPers}}
-        <span class="glyphicon glyphicon-remove"
-              (click)="deletePersonnage(personnage.noFilm, personnage.noAct)">
-        </span>
-    </li>
+
+    <span *ngFor="let personnage of personnages">
+        <li  *ngIf="(personnage.noAct == idActeur || !idActeur) && (!idFilm || personnage.noFilm == idFilm)" class="list-group-item">
+
+            <p>
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="bold">{{personnage.nomPers}}</span> joué par <span class="bold">{{personnage.acteurByNoAct.prenAct}} {{personnage.acteurByNoAct.nomAct}}</span>
+                -
+                <span class="glyphicon glyphicon-star"></span>
+                Film : <span class="bold">{{personnage.filmByNoFilm.titre}} </span>
+            </p>
+
+            <br/>
+            <button type="button" (click)="trierPersonnageByFilm(personnage.noFilm)" class="addPersonnage2Button btn btn-primary">
+                Tous les personnages du film <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+            <button type="button" (click)="trierPersonnageByActeur(personnage.noAct)" class="addPersonnage2Button btn btn-primary">
+                Tous les personnages de l'acteur <span class="glyphicon glyphicon-search"></span>
+            </button>
+
+            <button type="button" (click)="deletePersonnage(personnage.noFilm, personnage.noAct)" class="addPersonnage2Button btn btn-primary">
+                Supprimer <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </li>
+    </span>
 </ul>
 

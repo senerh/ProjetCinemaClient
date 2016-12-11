@@ -113,7 +113,6 @@ export class FilmFormComponent implements OnInit{
         this.filmsService
             .Update(filmToAdd)
             .subscribe(
-                ok => console.log(ok),
                 error => console.log(error),
                 () => this.router.navigateByUrl('/films')
             );

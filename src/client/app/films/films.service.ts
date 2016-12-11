@@ -40,11 +40,13 @@ export class FilmsService {
     };
 
     public Update = (itemToUpdate: Film): Observable<Response> => {
-        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 
     public Delete (noFilm: number): Observable<Response> {
-        return this._http.delete(this.actionUrl + noFilm, { headers: this.headers });
+        return this._http.delete(this.actionUrl + noFilm, { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 
 }

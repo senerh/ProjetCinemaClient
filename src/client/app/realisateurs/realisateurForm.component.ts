@@ -73,7 +73,7 @@ export class RealisateurFormComponent implements OnInit{
     private addRealisateur(): void {
         this.realisateursService
             .Add(this.formGroupRealisateur.value)
-            .subscribe(
+            .subscribe((data:Realisateur) => this.realisateur = data,
                 error => console.log(error),
                 () => {
                     console.log(this.realisateur);

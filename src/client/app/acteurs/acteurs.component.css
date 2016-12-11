@@ -8,6 +8,14 @@
     background-color: aqua;
 }
 
+.actionButton {
+    margin-top: 5px;
+    background-color: #64b6bc;
+    border-color: #090647;
+    color: #090647;
+    opacity: 0.8;
+    text-decoration: none;
+}
 
 .addActeurButton {
     margin-left: 22px;
@@ -30,3 +38,6 @@
     font-size: 15px;
 }
 
+.subTitle {
+    font-size: 14px;
+}

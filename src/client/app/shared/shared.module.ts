@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ToolbarComponent } from './toolbar/index';
-import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
 import {FooterComponent} from "./footer/footer.component";
 
@@ -14,8 +13,8 @@ import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  declarations: [ToolbarComponent, NavbarComponent, FooterComponent],
-  exports: [ToolbarComponent, NavbarComponent,
+  declarations: [ToolbarComponent, FooterComponent],
+  exports: [ToolbarComponent,
     CommonModule, FormsModule, RouterModule, FooterComponent]
 })
 export class SharedModule {

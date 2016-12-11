@@ -24,16 +24,19 @@ export class RealisateursService {
             .map((response: Response) => <Realisateur[]>response.json());
     };
 
-    public Add = (realisateur: string): Observable<Response> => {
-        return this._http.post(this.actionUrl, JSON.stringify(realisateur), { headers: this.headers });
+    public Add = (realisateur: string): Observable<Realisateur> => {
+        return this._http.post(this.actionUrl, JSON.stringify(realisateur), { headers: this.headers })
+            .map((response: Response) => <Realisateur>response.json());
     };
 
     public Delete (noRealisateur: number): Observable<Response> {
-        return this._http.delete(this.actionUrl + noRealisateur, { headers: this.headers });
+        return this._http.delete(this.actionUrl + noRealisateur, { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 
     public Update = (itemToUpdate: Realisateur): Observable<Response> => {
-        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers });
+        return this._http.put(this.actionUrl, JSON.stringify(itemToUpdate), { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 
     public GetFilmsOfRealisateur = (noRealisateur: number): Observable<Film[]> => {

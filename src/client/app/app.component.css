@@ -1,0 +1,18 @@
+.container-wrapper{
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    background: inherit;
+    margin-bottom: 70px;
+    box-shadow: 0 7px 10px -7px rgba(0, 0, 0, 0.41);
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+
+.backgroundContainer{
+    background: url("../img/background.jpeg") no-repeat center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

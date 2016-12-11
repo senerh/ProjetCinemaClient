@@ -33,6 +33,7 @@ export class PersonnagesService {
     };
 
     public Delete (noFilm: number, noActeur: number): Observable<Response> {
-        return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers });
+        return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers })
+            .map((response: Response) => <Response>response.json());
     };
 }

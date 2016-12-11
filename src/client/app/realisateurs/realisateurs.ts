@@ -6,4 +6,5 @@ export class Realisateur {
     public nomRea: string;
     public prenRea: number;
     public films: Film[];
+    public deletable: boolean;
 }

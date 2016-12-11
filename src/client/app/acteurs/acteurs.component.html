@@ -14,14 +14,49 @@
 
     <a class="list-group-item" *ngFor="let acteur of acteurs">
         <h4 class="titreActeurs">{{acteur.prenAct}} {{acteur.nomAct}}
-            <a [routerLink]="['/acteurs/edit/'+acteur.noAct]"
-               [routerLinkActive]="['router-link-active']"
-               [routerLinkActiveOptions]="{exact:true}">
 
-                <span class="spanCustom glyphicon glyphicon-edit"></span>
-            </a>
+            <span class="subTitle">  - Né(e) le : {{acteur.dateNaiss}}</span>
+            <span class="subTitle" *ngIf="acteur.dateDeces">/ Décédé le : {{acteur.dateDeces}}</span>
         </h4>
-        Né le : {{acteur.dateNaiss}}
-        <span *ngIf="acteur.dateDeces">/ Décédé le : {{acteur.dateDeces}}</span>
+
+        <a [routerLink]="['/acteurs/edit/'+acteur.noAct]"
+           [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}">
+
+            <button type="button"
+                    class="actionButton btn btn-primary">
+                Editer <span class="glyphicon glyphicon-edit"></span>
+            </button>
+        </a>
+
+
+        <button (click)="deleteActeur(acteur.noAct)"
+                type="button"
+                class="actionButton btn btn-primary">
+            Supprimer <span class="glyphicon glyphicon-remove"></span>
+        </button>
+
+        <button (click)="getPersonnageByNoActeur(acteur.noAct)"
+                type="button"
+                class="actionButton btn btn-sm"
+                data-toggle="modal"
+                data-target="#myModal">
+            Voir les personnages
+        </button>
     </a>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Personnages joués par l'acteur :</h2>
+                <div *ngFor="let personnage of personnages">
+                    <p>
+                        {{personnage.nomPers}} - Dans le film : {{personnage.filmByNoFilm.titre}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

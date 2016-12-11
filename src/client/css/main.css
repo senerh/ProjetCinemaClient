@@ -1,15 +1,15 @@
 /* Reset */
 
+@font-face {
+  font-family: "existence";
+  src: url("Existence-Light.ttf");
+}
+
+
 html{
   margin:0;
   padding:0;
 
-}
-
-body {
-  background: url(background.jpeg) no-repeat center fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
 html,
@@ -27,7 +27,7 @@ div {
 
 /* Set up a default font and some padding to provide breathing room */
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: existence, "Helvetica Neue", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

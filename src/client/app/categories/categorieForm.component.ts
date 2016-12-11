@@ -35,7 +35,6 @@ export class CategorieFormComponent implements OnInit{
 
     onCategorieSubmit(valid : boolean): void {
 
-
         if(valid == true){
             this.getAllCategorie();
         }
@@ -52,7 +51,6 @@ export class CategorieFormComponent implements OnInit{
 
                 if(!this.categorieExist()) {
                     this.addCategorie();
-                    this.router.navigateByUrl('/categories/true');
                 }
                 else {
                     this.router.navigateByUrl('/categories/false');
@@ -63,13 +61,11 @@ export class CategorieFormComponent implements OnInit{
     }
 
     private addCategorie(): void {
-
         this.categoriesService
             .Add(this.formGroupCategorie.value)
-            .subscribe(
+            .subscribe((ok) => console.log(ok),
                 error => console.log(error),
-                () => console.log(this.categorie)
-            );
+                () => this.router.navigateByUrl('/categories/true'));
     }
 
     private categorieExist(): boolean{
@@ -82,6 +78,4 @@ export class CategorieFormComponent implements OnInit{
         }
         return false
     }
-
-
 }
