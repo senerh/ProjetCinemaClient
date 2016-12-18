@@ -1,4 +1,13 @@
 
+<div *ngIf="resultat == 'false'" onclick="$('.alert1').hide()" class="customValidation alert1 alert alert-danger">
+    <strong>Erreur</strong>  Un personnage existe déjà pour cet acteur dans ce film
+</div>
+
+
+<div *ngIf="resultat == 'true'" onclick="$('.alert2').hide()" class="customValidation alert2 alert alert-success">
+    <strong>Succès</strong>  Le personnage a été correctement ajouté
+</div>
+
 <a [routerLink]="['/personnages/add']"
    [routerLinkActive]="['router-link-active']"
    [routerLinkActiveOptions]="{exact:true}">

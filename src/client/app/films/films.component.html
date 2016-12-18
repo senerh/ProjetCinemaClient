@@ -1,3 +1,22 @@
+
+
+
+<div *ngIf="resultat == 'false'" onclick="$('.alert1').hide()" class="customValidation alert1 alert alert-danger">
+    <strong>Erreur</strong>  Le film n'a pas été ajouté (cliquez dessus pour faire disparaître cette bannière)
+</div>
+
+<div *ngIf="resultat == 'true'" onclick="$('.alert2').hide()" class="customValidation alert2 alert alert-success">
+    <strong>Succès</strong>  Le film a été correctement ajouté (cliquez dessus pour faire disparaître cette bannière)
+</div>
+
+<div *ngIf="resultat == 'delfalse'" onclick="$('.alert3').hide()" class="customValidation alert3 alert alert-danger">
+    <strong>Erreur</strong>  Le film n'a pas été supprimé (cliquez dessus pour faire disparaître cette bannière)
+</div>
+
+<div *ngIf="resultat == 'deltrue'" onclick="$('.alert4').hide()" class="customValidation alert4 alert alert-success">
+    <strong>Succès</strong>  Le film a été correctement supprimé (cliquez dessus pour faire disparaître cette bannière)
+</div>
+
 <a [routerLink]="['/films/add']"
    [routerLinkActive]="['router-link-active']"
    [routerLinkActiveOptions]="{exact:true}">
@@ -29,7 +48,6 @@
             <div class="thumbnail film">
                 <div class="caption">
 
-
                     <h3 class="titreFilm">
                         {{film.titre}}
                     </h3>
@@ -43,7 +61,7 @@
                         <span class="gras">Réalisateur </span>: {{film.realisateurByNoRea.prenRea}} {{film.realisateurByNoRea.nomRea}}
 
                         <br/>
-                        <span onmouseover="this.style.cursor='pointer'" (click)="trierFilmByRea(film.realisateurByNoRea.noRea)" class="glyphicon glyphicon-zoom-in">
+                        <span onmouseover="this.style.cursor='pointer'" (click)="trierFilmByRea(film.realisateurByNoRea.noRea)" class="greenColor glyphicon glyphicon-zoom-in">
                             Trier par réalisateur
                         </span>
 
@@ -74,8 +92,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">

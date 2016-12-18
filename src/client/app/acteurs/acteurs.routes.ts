@@ -14,5 +14,9 @@ export const ActeursRoutes: Route[] = [
     {
         path: 'acteurs/edit/:id',
         component: ActeurFormComponent
+    },
+    {
+        path: 'acteurs/:resultat',
+        component: ActeursComponent
     }
 ];

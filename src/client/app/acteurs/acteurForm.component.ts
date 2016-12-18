@@ -73,10 +73,13 @@ export class ActeurFormComponent implements OnInit{
         this.acteursService
             .Add(this.formGroupActeur.value)
             .subscribe((data:Acteur) => this.acteur = data,
-                error => console.log(error),
+                error => {
+                    this.router.navigate(['/acteurs/', {resultat: "false"}]);
+                    console.log(error);
+                },
                 () => {
                     console.log(this.acteur);
-                    this.router.navigate(['/acteurs']);
+                    this.router.navigate(['/acteurs/', {resultat: "true"}]);
                 }
             );
     }

@@ -46,9 +46,6 @@ export class CategorieFormComponent implements OnInit{
             .subscribe((data:Categorie[]) => this.categories = data,
                 error => console.log(error),
                 () => {
-                console.log(this.categories);
-                console.log(this.categorieExist());
-
                 if(!this.categorieExist()) {
                     this.addCategorie();
                 }
@@ -56,8 +53,6 @@ export class CategorieFormComponent implements OnInit{
                     this.router.navigateByUrl('/categories/false');
                 }
         });
-
-
     }
 
     private addCategorie(): void {
@@ -70,8 +65,6 @@ export class CategorieFormComponent implements OnInit{
 
     private categorieExist(): boolean{
         for (let categorie of this.categories){
-            console.log(this.formGroupCategorie.value.codeCat);
-            console.log(categorie.codeCat);
             if(this.formGroupCategorie.value.codeCat == categorie.codeCat){
                 return true;
             }

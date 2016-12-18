@@ -21,6 +21,7 @@ export class FilmsComponent implements OnInit{
     films: Film[];
     personnages: Personnage[];
     codeCat: string;
+    resultat: string;
     noRea: number;
     formGroupCategorie : FormGroup;
     categories : Categorie[];
@@ -37,7 +38,10 @@ export class FilmsComponent implements OnInit{
 
         this.routee.params.subscribe(params => {
             this.codeCat = params['codeCat'];
+            this.resultat = params['resultat'];
         });
+
+        console.log(this.resultat);
 
         this.getAllCategorie();
 
@@ -85,14 +89,18 @@ export class FilmsComponent implements OnInit{
             );
     }
 
+
     public deleteFilm(noFilm: number): void {
         this.filmsService
             .Delete(noFilm)
             .subscribe(
-                error => console.log(error),
+                error => {
+                    console.log(error);
+                    this.router.navigate(['/films/', {resultat: "delfalse"}]);
+                },
                 () => {
                     this.getAllFilms();
-                    this.router.navigateByUrl('/films');
+                    this.router.navigate(['/films/', {resultat: "deltrue"}]);
                 }
             );
     }

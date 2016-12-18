@@ -56,7 +56,7 @@ export class PersonnageFormComponent implements OnInit{
 
     public onPersonnageSubmit(valid : boolean): void {
         if(valid == true){
-            this.addPersonnage();
+            this.getPersonnage(this.formGroupPersonnage.value.noFilm, this.formGroupPersonnage.value.noAct);
         }
     }
 
@@ -65,16 +65,25 @@ export class PersonnageFormComponent implements OnInit{
             .Add(this.formGroupPersonnage.value)
             .subscribe(
                 error => console.log(error),
-                () => this.router.navigateByUrl('/personnages')
+                () => {
+                    console.log(this.personnage);
+                    this.router.navigate(['/personnages/', {resultat: "true"}]);
+                }
             );
     }
 
-    private editPersonnage(): void {
+    private getPersonnage(noFilm: number, noActeur: number): void {
         this.personnagesService
-            .Update(this.formGroupPersonnage.value)
-            .subscribe(
-                error => console.log(error),
-                () => console.log(this.personnage)
+            .GetSingle(noFilm, noActeur)
+            .subscribe((data:Personnage) => this.personnage = data,
+                error => {
+                    this.addPersonnage();
+                },
+                () => {
+                    console.log(this.personnage);
+                    this.router.navigate(['/personnages/', {resultat: "false"}]);
+                }
             );
     }
+
 }

@@ -1,4 +1,21 @@
 
+
+<div *ngIf="resultat == 'false'" onclick="$('.alert1').hide()" class="customValidation alert1 alert alert-danger">
+    <strong>Erreur</strong>  L'acteur n'a pas été ajouté
+</div>
+
+<div *ngIf="resultat == 'true'" onclick="$('.alert2').hide()" class="customValidation alert2 alert alert-success">
+    <strong>Succès</strong>  L'acteur a été correctement ajouté
+</div>
+
+<div *ngIf="resultat == 'delfalse'" onclick="$('.alert3').hide()" class="customValidation alert3 alert alert-danger">
+    <strong>Erreur</strong>  L'acteur n'a pas été supprimé
+</div>
+
+<div *ngIf="resultat == 'deltrue'" onclick="$('.alert4').hide()" class="customValidation alert4 alert alert-success">
+    <strong>Succès</strong>  L'acteur a été correctement supprimé
+</div>
+
 <a [routerLink]="['/acteurs/add']"
    [routerLinkActive]="['router-link-active']"
    [routerLinkActiveOptions]="{exact:true}">

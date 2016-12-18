@@ -36,4 +36,9 @@ export class PersonnagesService {
         return this._http.delete(this.actionUrl + noFilm + "/" + noActeur, { headers: this.headers })
             .map((response: Response) => <Response>response.json());
     };
+
+    public GetSingle = (noFilm: number, noActeur: number): Observable<Personnage> => {
+        return this._http.get(this.actionUrl + noFilm + "/" + noActeur)
+            .map((response: Response) => <Personnage>response.json())
+    };
 }

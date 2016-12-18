@@ -22,5 +22,9 @@ export const FilmsRoutes: Route[] = [
         path: 'films/categorie/:codeCat',
         component: FilmsComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'films/:resultat',
+        component: FilmsComponent
     }
 ];

@@ -33,9 +33,14 @@
                 </li>
 
                 <li class="divider"></li>
-                <li *ngIf="realisateur.deletable"
+                <li onmouseover="this.style.cursor='pointer'" *ngIf="realisateur.deletable"
                     (click)="deleteRealisateur(realisateur.noRea)">
                     <a>Supprimer</a>
+                </li>
+
+
+                <li onmouseover="this.style.cursor='auto'" *ngIf="!realisateur.deletable">
+                    <a class="rougeStyle">Suppression impossible - Des films sont associés à ce réalisateur</a>
                 </li>
             </ul>
         </div>

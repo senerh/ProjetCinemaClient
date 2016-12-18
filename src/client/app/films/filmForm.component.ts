@@ -101,8 +101,11 @@ export class FilmFormComponent implements OnInit{
             .Add(this.formGroupFilm.value)
             .subscribe(
                 (data:Film) => this.film = data,
-                error => console.log(error),
-                () => this.router.navigateByUrl('/films')
+                error => {
+                    this.router.navigate(['/films/', {resultat: "false"}]);
+                    console.log(error)
+                },
+                () => this.router.navigate(['/films/', {resultat: "true"}])
             );
     }
 
@@ -127,7 +130,6 @@ export class FilmFormComponent implements OnInit{
                 error => console.log(error),
                 () => {
                     this.construireForm();
-                    console.log(this.film)
                 }
             );
     }

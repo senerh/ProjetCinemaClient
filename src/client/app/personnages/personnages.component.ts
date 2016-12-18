@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {PersonnagesService} from "./personnages.service";
 import {Personnage} from "./personnage";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -16,11 +16,18 @@ export class PersonnagesComponent implements OnInit{
     personnages: Personnage[];
     idFilm: number;
     idActeur: number;
+    resultat: string;
 
     constructor(private personnagesService: PersonnagesService,
-                private router: Router) { }
+                private router: Router,
+                private routee: ActivatedRoute) { }
 
     ngOnInit() {
+
+        this.routee.params.subscribe(params => {
+            this.resultat = params['resultat'];
+        });
+
         this.getAllPersonnages();
     }
 

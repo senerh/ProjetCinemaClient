@@ -10,5 +10,9 @@ export const PersonnagesRoutes: Route[] = [
     {
         path: 'personnages/add',
         component: PersonnageFormComponent
+    },
+    {
+        path: 'personnages/:resultat',
+        component: PersonnagesComponent
     }
 ];
